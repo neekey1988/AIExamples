@@ -1,4 +1,5 @@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
+
 import numpy as np
 import operator
 
@@ -44,6 +45,7 @@ def classify0(inX, dataSet, labels, k):
     sortedClassCount = sorted(classCount.items(),key=operator.itemgetter(1),reverse=True)
     #返回次数最多的类别,即所要分类的类别
     return sortedClassCount[0][0]
+
 
 """
 函数说明:打开并解析文件，对数据进行分类：1代表不喜欢,2代表魅力一般,3代表极具魅力
@@ -117,44 +119,38 @@ def autoNorm(dataSet):
     #返回归一化数据结果,数据范围,最小值
     return normDataSet, ranges, minVals
 
-
 """
-函数说明:分类器测试函数
+函数说明:通过输入一个人的三维特征,进行分类输出
 
 Parameters:
     无
 Returns:
-    normDataSet - 归一化后的特征矩阵
-    ranges - 数据范围
-    minVals - 数据最小值
+    无
 
 Modify:
     2017-03-24
 """
-def datingClassTest():
+def classifyPerson():
+    #输出结果
+    resultList = ['讨厌','有些喜欢','非常喜欢']
+    #三维特征用户输入
+    precentTats = float(input("玩视频游戏所耗时间百分比:"))
+    ffMiles = float(input("每年获得的飞行常客里程数:"))
+    iceCream = float(input("每周消费的冰激淋公升数:"))
     #打开的文件名
     filename = "knn/datingTestSet.txt"
-    #将返回的特征矩阵和分类向量分别存储到datingDataMat和datingLabels中
+    #打开并处理数据
     datingDataMat, datingLabels = file2matrix(filename)
-    #取所有数据的百分之十
-    hoRatio = 0.10
-    #数据归一化,返回归一化后的矩阵,数据范围,数据最小值
+    #训练集归一化
     normMat, ranges, minVals = autoNorm(datingDataMat)
-    #获得normMat的行数
-    m = normMat.shape[0]
-    #百分之十的测试数据的个数
-    numTestVecs = int(m * hoRatio)
-    #分类错误计数
-    errorCount = 0.0
-
-    for i in range(numTestVecs):
-        #前numTestVecs个数据作为测试集,后m-numTestVecs个数据作为训练集
-        classifierResult = classify0(normMat[i,:], normMat[numTestVecs:m,:],
-            datingLabels[numTestVecs:m], 4)
-        print("分类结果:%d\t真实类别:%d" % (classifierResult, datingLabels[i]))
-        if classifierResult != datingLabels[i]:
-            errorCount += 1.0
-    print("错误率:%f%%" %(errorCount/float(numTestVecs)*100))
+    #生成NumPy数组,测试集
+    inArr = np.array([precentTats, ffMiles, iceCream])
+    #测试集归一化
+    norminArr = (inArr - minVals) / ranges
+    #返回分类结果
+    classifierResult = classify0(norminArr, normMat, datingLabels, 3)
+    #打印结果
+    print("你可能%s这个人" % (resultList[classifierResult-1]))
 
 """
 函数说明:main函数
@@ -168,4 +164,4 @@ Modify:
     2017-03-24
 """
 if __name__ == '__main__':
-    datingClassTest()
+    classifyPerson()

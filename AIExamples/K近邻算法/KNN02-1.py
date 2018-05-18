@@ -1,4 +1,4 @@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 
 from matplotlib.font_manager import FontProperties
 import matplotlib.lines as mlines

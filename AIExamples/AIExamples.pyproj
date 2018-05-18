@@ -30,19 +30,20 @@
     <Compile Include="KNN\KNN02-3.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="KNN\KNN03-2.py" />
     <Compile Include="KNN\KNN03-1.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="KNN\" />
-    <Folder Include="KNN\testDigits\" />
+    <Folder Include="K近邻算法\" />
+    <Folder Include="K近邻算法\testDigits\" />
     <Folder Include="KNN\trainingDigits\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Install.txt" />
     <Content Include="KNN\datingTestSet.txt" />
-    <Content Include="KNN\testDigits\0_0.txt" />
+    <Content Include="K近邻算法\testDigits\0_0.txt" />
     <Content Include="KNN\testDigits\0_1.txt" />
     <Content Include="KNN\testDigits\0_10.txt" />
     <Content Include="KNN\testDigits\0_11.txt" />
