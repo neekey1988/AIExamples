@@ -133,7 +133,7 @@ Modify:
 """
 def datingClassTest():
     #打开的文件名
-    filename = "knn/datingTestSet.txt"
+    filename = "K近邻算法/datingTestSet.txt"
     #将返回的特征矩阵和分类向量分别存储到datingDataMat和datingLabels中
     datingDataMat, datingLabels = file2matrix(filename)
     #取所有数据的百分之十

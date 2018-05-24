@@ -87,7 +87,7 @@ def handwritingClassTest():
 	#测试集的Labels
 	hwLabels = []
 	#返回trainingDigits目录下的文件名
-	trainingFileList = listdir('knn/trainingDigits')
+	trainingFileList = listdir('K近邻算法/trainingDigits')
 	#返回文件夹下文件的个数
 	m = len(trainingFileList)
 	#初始化训练的Mat矩阵,测试集
@@ -101,9 +101,9 @@ def handwritingClassTest():
 		#将获得的类别添加到hwLabels中
 		hwLabels.append(classNumber)
 		#将每一个文件的1x1024数据存储到trainingMat矩阵中
-		trainingMat[i,:] = img2vector('knn/trainingDigits/%s' % (fileNameStr))
+		trainingMat[i,:] = img2vector('K近邻算法/trainingDigits/%s' % (fileNameStr))
 	#返回testDigits目录下的文件名
-	testFileList = listdir('knn/testDigits')
+	testFileList = listdir('K近邻算法/testDigits')
 	#错误检测计数
 	errorCount = 0.0
 	#测试数据的数量
@@ -115,7 +115,7 @@ def handwritingClassTest():
 		#获得分类的数字
 		classNumber = int(fileNameStr.split('_')[0])
 		#获得测试集的1x1024向量,用于训练
-		vectorUnderTest = img2vector('knn/testDigits/%s' % (fileNameStr))
+		vectorUnderTest = img2vector('K近邻算法/testDigits/%s' % (fileNameStr))
 		#获得预测结果
 		classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)
 		print("分类返回结果为%d\t真实结果为%d" % (classifierResult, classNumber))

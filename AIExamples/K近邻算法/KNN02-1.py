@@ -130,7 +130,7 @@ Modify:
 """
 if __name__ == '__main__':
     #打开的文件名
-    filename = "knn/datingTestSet.txt"
+    filename = "K近邻算法/datingTestSet.txt"
     #打开并处理数据
     datingDataMat, datingLabels = file2matrix(filename)
     showdatas(datingDataMat, datingLabels)
